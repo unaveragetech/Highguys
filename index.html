@@ -157,6 +157,7 @@
 
       <button class="copy-btn" onclick="copyInvoice()">Copy Invoice</button>
 
+      <!-- Form submits to external site -->
       <form action="https://formsubmit.co/el/sumuhu" method="POST" target="_blank">
         <input type="hidden" name="order_number" id="submitOrderNumber">
         <input type="hidden" name="name" id="submitName">
@@ -271,18 +272,12 @@
           <em>Yield:</em> ${info.yield}<br>
           <em>Flavor:</em> ${info.flavor}<br>
           <em>Effects:</em> ${info.effects}<br>
-          <button class="leafly-btn" onclick="openLeafly('${encodeURIComponent(selectedStrain)}')">View on Leafly</button>
+          <button class="leafly-btn" onclick="window.open('${info.leaflyLink}', '_blank')">View on Leafly</button>
         `;
         infoDiv.style.display = "block";
       } else {
         infoDiv.style.display = "none";
       }
-    }
-
-    // Open Leafly link in a new tab based on strain name
-    function openLeafly(strainNameEncoded) {
-      const url = `https://www.leafly.com/search?q=${strainNameEncoded}`;
-      window.open(url, '_blank');
     }
 
     // Generate invoice from form data
