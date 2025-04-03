@@ -6,350 +6,435 @@
   <title>Clone Order Form</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
       margin: 0;
       padding: 0;
+      background-color: #f5f5f5;
     }
-    .banner {
-      background: linear-gradient(45deg, #008000, #003300);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
+    
     .container {
-      max-width: 600px;
-      margin: 30px auto;
+      max-width: 800px;
+      margin: 20px auto;
       padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+    
+    h2 {
+      color: #008000;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    form {
+      display: grid;
+      grid-gap: 10px;
+    }
+    
     label {
       font-weight: bold;
+      margin-top: 10px;
       display: block;
-      margin-top: 15px;
     }
+    
     input, select, textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
     }
+    
     button {
-      width: 100%;
-      padding: 12px;
-      background: #008000;
+      background-color: #008000;
       color: white;
       border: none;
-      cursor: pointer;
-      border-radius: 5px;
+      padding: 12px 20px;
       font-size: 16px;
-      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
     }
-    button:hover { background: #006600; }
+    
+    button:hover {
+      background-color: #006400;
+    }
+
     .strain-info {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
       margin-top: 10px;
-      padding: 10px;
-      background: #e9f5e9;
-      border-left: 4px solid green;
       display: none;
     }
+    
+    .strain-info a {
+      color: #008000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .strain-info a:hover {
+      text-decoration: underline;
+    }
+    
     .invoice-container {
       display: none;
-      background: #fff;
-      padding: 15px;
-      border-radius: 5px;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
       border: 1px solid #ddd;
-      margin-top: 20px;
+      border-radius: 4px;
     }
-    .copy-btn {
-      background: blue;
-      margin-top: 5px;
+    
+    .invoice-container h3 {
+      color: #008000;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-top: 0;
     }
-    .copy-btn:hover { background: darkblue; }
-    .footer {
-      background: #222;
+    
+    .submit-button {
+      background-color: #4CAF50;
+      margin-top: 15px;
+    }
+    
+    /* Added new styles */
+    .field-group { margin-bottom: 20px; }
+    .form-heading { 
+      color: #008000;
+      border-bottom: 2px solid #008000;
+      padding-bottom: 5px;
+      margin: 25px 0 15px;
+    }
+    .clone-size-options { display: flex; gap: 15px; }
+    .clone-size-options label { flex: 1; }
+    
+    .banner {
+      background-color: #008000;
       color: white;
       text-align: center;
       padding: 15px;
-      margin-top: 30px;
-      font-size: 12px;
+      margin-bottom: 20px;
     }
-    .leafly-btn {
-      background: #0077cc;
-      color: #fff;
-      padding: 8px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
+    
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
     }
-    .leafly-btn:hover { background: #005fa3; }
+    
+    .banner p {
+      margin: 5px 0 0;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .clone-size-options {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Banner -->
   <div class="banner">
-    🌿 Welcome to Our Clone Ordering Service 🌿  
-    <p style="font-size: 16px; margin: 10px 0;">Premium Cannabis Strains Available for Order</p>
+    <h1>High Guys Growing Supplies</h1>
+    <p>Premium Cannabis Clones - Local Pickup in Hudson Valley Area</p>
   </div>
 
   <div class="container">
     <h2>Order Clones or Request Consultation</h2>
     <form id="orderForm">
-      <label>Full Name:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label>Email Address:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label>Order Type:</label>
-      <select id="orderType" name="orderType">
-        <option value="Order">Place an Order</option>
-        <option value="Consultation">Request a Consultation</option>
-      </select>
-
-      <label>Select Strain:</label>
-      <select id="strain" name="strain" onchange="updateStrainInfo()">
-        <option value="Catskill OG">Catskill OG</option>
-        <option value="Royal Gorilla">Royal Gorilla</option>
-        <option value="Holy Kush">Holy Kush</option>
-        <option value="Super Sour Runtz">Super Sour Runtz</option>
-        <option value="Super Fruit">Super Fruit</option>
-        <option value="Pineapple Express">Pineapple Express</option>
-        <option value="Holy Smoke">Holy Smoke</option>
-        <option value="Big Star">Big Star</option>
-        <option value="A.M.G.">A.M.G.</option>
-        <option value="Purple Punch">Purple Punch</option>
-        <option value="L.S.D. (Lemon Sour Diesel)">L.S.D. (Lemon Sour Diesel)</option>
-      </select>
-
-      <!-- Strain Info Box -->
-      <div id="strain-info" class="strain-info">
-        <!-- Info will be injected here -->
+      <div class="field-group">
+        <h3 class="form-heading">Contact Information</h3>
+        <label>Full Name:</label>
+        <input type="text" id="name" name="name" required placeholder="John Doe">
+        
+        <label>Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="john@example.com">
+        
+        <label>Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
       </div>
 
-      <label>Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+      <div class="field-group">
+        <h3 class="form-heading">Order Details</h3>
+        <label>Order Type:</label>
+        <select id="orderType" name="orderType">
+          <option value="Order">Place an Order</option>
+          <option value="Consultation">Request a Consultation</option>
+        </select>
 
-      <label>Additional Notes:</label>
-      <textarea id="notes" name="notes" placeholder="Any special requests?"></textarea>
+        <label>Delivery Method:</label>
+        <select id="deliveryMethod" name="deliveryMethod">
+          <option value="Shipping">Shipping</option>
+          <option value="Local Pickup">Local Pickup</option>
+        </select>
+
+        <label>Select Strain:</label>
+        <select id="strain" name="strain" onchange="updateStrainInfo()">
+          <!-- Updated Leafly links to direct strain pages where possible -->
+          <option value="Catskill OG">Catskill OG</option>
+          <option value="Royal Gorilla">Royal Gorilla</option>
+          <option value="Holy Kush">Holy Kush</option>
+          <option value="Super Sour Runtz">Super Sour Runtz</option>
+          <option value="Super Fruit">Super Fruit</option>
+          <option value="Pineapple Express">Pineapple Express</option>
+          <option value="Holy Smoke">Holy Smoke</option>
+          <option value="Big Star">Big Star</option>
+          <option value="A.M.G.">A.M.G.</option>
+          <option value="Purple Punch">Purple Punch</option>
+          <option value="L.S.D. (Lemon Sour Diesel)">L.S.D. (Lemon Sour Diesel)</option>
+        </select>
+
+        <div id="strain-info" class="strain-info"></div>
+
+        <label>Clone Size:</label>
+        <div class="clone-size-options">
+          <label>
+            <input type="radio" name="cloneSize" value="Small (6-12\")" checked> Small (6-12")
+          </label>
+          <label>
+            <input type="radio" name="cloneSize" value="Medium (12-18\")"> Medium (12-18")
+          </label>
+        </div>
+
+        <label>Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+
+        <label>Additional Notes:</label>
+        <textarea id="notes" name="notes" placeholder="Special requests, growing setup details, etc."></textarea>
+      </div>
 
       <button type="button" onclick="generateInvoice()">Generate Invoice</button>
     </form>
 
     <!-- Invoice Section -->
     <div id="invoice" class="invoice-container">
+      <!-- Added new fields to invoice display -->
       <h3>Invoice</h3>
       <p><strong>Order #:</strong> <span id="invoiceOrderNumber"></span></p>
       <p><strong>Name:</strong> <span id="invoiceName"></span></p>
       <p><strong>Email:</strong> <span id="invoiceEmail"></span></p>
-      <p><strong>Type:</strong> <span id="invoiceType"></span></p>
+      <p><strong>Phone:</strong> <span id="invoicePhone"></span></p>
+      <p><strong>Order Type:</strong> <span id="invoiceOrderType"></span></p>
+      <p><strong>Delivery:</strong> <span id="invoiceDelivery"></span></p>
       <p><strong>Strain:</strong> <span id="invoiceStrain"></span></p>
+      <p><strong>Clone Size:</strong> <span id="invoiceCloneSize"></span></p>
       <p><strong>Quantity:</strong> <span id="invoiceQuantity"></span></p>
-      <p><strong>Total Price:</strong> $<span id="invoiceTotal"></span></p>
       <p><strong>Notes:</strong> <span id="invoiceNotes"></span></p>
+      <p><strong>Total Price:</strong> $<span id="invoicePrice"></span></p>
 
-      <button class="copy-btn" onclick="copyInvoice()">Copy Invoice</button>
-
-      <!-- Form submits to external site -->
       <form id="submitForm" action="https://formsubmit.co/el/sumuhu" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://github.com/unaveragetech/Highguys/blob/main/ty.html"> <!-- Replace with your actual thank you page -->
+        <input type="hidden" name="_next" value="https://unaveragetech.github.io/Highguys/ty.html">
+        <!-- Added new hidden fields -->
         <input type="hidden" name="order_number" id="submitOrderNumber">
         <input type="hidden" name="name" id="submitName">
         <input type="hidden" name="email" id="submitEmail">
-        <input type="hidden" name="type" id="submitType">
+        <input type="hidden" name="phone" id="submitPhone">
+        <input type="hidden" name="order_type" id="submitOrderType">
+        <input type="hidden" name="deliveryMethod" id="submitDelivery">
         <input type="hidden" name="strain" id="submitStrain">
+        <input type="hidden" name="clone_size" id="submitCloneSize">
         <input type="hidden" name="quantity" id="submitQuantity">
-        <input type="hidden" name="total" id="submitTotal">
         <input type="hidden" name="notes" id="submitNotes">
-        <button type="submit">Send Request</button>
+        <input type="hidden" name="price" id="submitPrice">
+        <button type="submit" class="submit-button">Submit Order</button>
       </form>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    🚨 <strong>Disclaimer:</strong> All orders are subject to verification. This service is for educational and research purposes only. Please comply with local laws. 🚨
-  </div>
-
   <script>
-    // Detailed strain information
+    // Strain information with details and links
     const strainsInfo = {
       "Catskill OG": {
-        growTime: "8-9 weeks (flowering indoors)",
-        yield: "Moderate",
-        flavor: "Earthy, pine with hints of citrus",
-        effects: "Relaxing and euphoric",
-        leaflyLink: "https://www.leafly.com/search?q=Catskill%20OG"
+        growTime: "8-9 weeks",
+        yield: "Moderate to high",
+        flavor: "Earthy, pine, diesel",
+        effects: "Relaxing and balanced high",
+        leaflyLink: "https://www.leafly.com/strains/og-kush"
       },
       "Royal Gorilla": {
-        growTime: "8-10 weeks",
-        yield: "High yield",
-        flavor: "Earthy, pungent with lemon hints",
-        effects: "Potent, euphoric, and energetic",
-        leaflyLink: "https://www.leafly.com/search?q=Royal%20Gorilla"
+        growTime: "9-10 weeks",
+        yield: "High",
+        flavor: "Pine, earthy, sweet",
+        effects: "Powerful, euphoric, relaxing",
+        leaflyLink: "https://www.leafly.com/strains/gorilla-glue"
       },
       "Holy Kush": {
-        growTime: "7-8 weeks",
+        growTime: "8-9 weeks",
         yield: "Moderate",
-        flavor: "Spicy, earthy",
-        effects: "Deeply relaxing and sedative",
-        leaflyLink: "https://www.leafly.com/search?q=Holy%20Kush"
+        flavor: "Earthy, sweet, spicy",
+        effects: "Relaxing, pain-relieving",
+        leaflyLink: "https://www.leafly.com/strains/kush"
       },
       "Super Sour Runtz": {
         growTime: "8-9 weeks",
         yield: "Moderate to high",
-        flavor: "Sweet and sour, candy-like",
-        effects: "Uplifting and balanced",
-        leaflyLink: "https://www.leafly.com/search?q=Super%20Sour%20Runtz"
+        flavor: "Sour, sweet, fruity",
+        effects: "Uplifting and creative",
+        leaflyLink: "https://www.leafly.com/strains/runtz"
       },
       "Super Fruit": {
-        growTime: "8-10 weeks",
+        growTime: "8-9 weeks",
         yield: "Moderate",
-        flavor: "Fruity, tropical",
-        effects: "Energizing and euphoric",
-        leaflyLink: "https://www.leafly.com/search?q=Super%20Fruit"
+        flavor: "Berry, tropical, sweet",
+        effects: "Balanced, euphoric",
+        leaflyLink: "https://www.leafly.com/strains"
       },
       "Pineapple Express": {
         growTime: "8-9 weeks",
         yield: "Moderate to high",
         flavor: "Pineapple, tropical",
         effects: "Energetic and creative",
-        leaflyLink: "https://www.leafly.com/search?q=Pineapple%20Express"
+        leaflyLink: "https://www.leafly.com/strains/pineapple-express"
       },
       "Holy Smoke": {
         growTime: "7-8 weeks",
         yield: "Moderate",
-        flavor: "Citrus and spice",
-        effects: "Calming and relaxing",
-        leaflyLink: "https://www.leafly.com/search?q=Holy%20Smoke"
+        flavor: "Herbal, spicy, earthy",
+        effects: "Cerebral, uplifting",
+        leaflyLink: "https://www.leafly.com/strains"
       },
       "Big Star": {
-        growTime: "8-10 weeks",
+        growTime: "8-9 weeks",
         yield: "High",
-        flavor: "Earthy, woody with a hint of sweetness",
-        effects: "Uplifting and creative",
-        leaflyLink: "https://www.leafly.com/search?q=Big%20Star"
+        flavor: "Sweet, citrus, diesel",
+        effects: "Happy, energetic",
+        leaflyLink: "https://www.leafly.com/strains"
       },
       "A.M.G.": {
-        growTime: "9-10 weeks",
-        yield: "Moderate",
-        flavor: "Herbal, pungent",
-        effects: "Cerebral and energizing",
-        leaflyLink: "https://www.leafly.com/search?q=A.M.G."
+        growTime: "9 weeks",
+        yield: "Moderate to high",
+        flavor: "Pungent, earthy, diesel",
+        effects: "Strong, relaxing",
+        leaflyLink: "https://www.leafly.com/strains"
       },
       "Purple Punch": {
-        growTime: "8-9 weeks",
-        yield: "Moderate",
-        flavor: "Sweet, berry, grape",
-        effects: "Relaxing and sedative",
-        leaflyLink: "https://www.leafly.com/search?q=Purple%20Punch"
+        growTime: "7-8 weeks",
+        yield: "High",
+        flavor: "Grape, berry, sweet",
+        effects: "Relaxing, sedating",
+        leaflyLink: "https://www.leafly.com/strains/purple-punch"
       },
       "L.S.D. (Lemon Sour Diesel)": {
-        growTime: "8-10 weeks",
-        yield: "Moderate",
+        growTime: "9-10 weeks",
+        yield: "High",
         flavor: "Lemon, diesel, sour",
-        effects: "Cerebral, uplifting, creative",
-        leaflyLink: "https://www.leafly.com/search?q=L.S.D.%20Lemon%20Sour%20Diesel"
+        effects: "Psychedelic, cerebral",
+        leaflyLink: "https://www.leafly.com/strains/lsd"
       }
     };
 
-    // Update strain info based on selection
+    // Display strain information
     function updateStrainInfo() {
-      const selectedStrain = document.getElementById("strain").value;
-      const infoDiv = document.getElementById("strain-info");
-
-      if (strainsInfo[selectedStrain]) {
-        const info = strainsInfo[selectedStrain];
-        infoDiv.innerHTML = `
-          <strong>${selectedStrain}</strong><br>
-          <em>Grow Time:</em> ${info.growTime}<br>
-          <em>Yield:</em> ${info.yield}<br>
-          <em>Flavor:</em> ${info.flavor}<br>
-          <em>Effects:</em> ${info.effects}<br>
-          <button class="leafly-btn" onclick="window.open('${info.leaflyLink}', '_blank')">View on Leafly</button>
+      const strain = document.getElementById("strain").value;
+      const strainInfoDiv = document.getElementById("strain-info");
+      
+      if (strainsInfo[strain]) {
+        const info = strainsInfo[strain];
+        strainInfoDiv.innerHTML = `
+          <p><strong>Flowering Time:</strong> ${info.growTime}</p>
+          <p><strong>Yield:</strong> ${info.yield}</p>
+          <p><strong>Flavor Profile:</strong> ${info.flavor}</p>
+          <p><strong>Effects:</strong> ${info.effects}</p>
+          <p><a href="${info.leaflyLink}" target="_blank">Learn more on Leafly</a></p>
         `;
-        infoDiv.style.display = "block";
+        strainInfoDiv.style.display = "block";
       } else {
-        infoDiv.style.display = "none";
+        strainInfoDiv.style.display = "none";
       }
     }
 
-    // Generate invoice from form data
-    function generateInvoice() {
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const orderType = document.getElementById("orderType").value;
-      const strain = document.getElementById("strain").value;
-      const quantity = parseInt(document.getElementById("quantity").value);
-      const notes = document.getElementById("notes").value;
+    // Generate random order number
+    function generateOrderNumber() {
+      return 'HG' + Math.floor(100000 + Math.random() * 900000);
+    }
 
-      if (!name || !email || quantity < 1) {
-        alert("Please fill in all required fields.");
+    // Calculate price based on clone size and quantity
+    function calculatePrice(cloneSize, quantity) {
+      const basePrice = cloneSize.includes("Small") ? 25 : 35;
+      return basePrice * quantity;
+    }
+
+    // Generate invoice
+    function generateInvoice() {
+      // Validate form
+      const form = document.getElementById("orderForm");
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
-
-      // Generate unique order number and calculate price
-      const orderNumber = "ORD-" + Math.floor(Math.random() * 1000000);
-      const pricePerClone = (quantity >= 2) ? 20 : 25;
-      const totalPrice = pricePerClone * quantity;
-
-      // Set invoice details
+      
+      // Get form values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const orderType = document.getElementById("orderType").value;
+      const deliveryMethod = document.getElementById("deliveryMethod").value;
+      const strain = document.getElementById("strain").value;
+      const cloneSize = document.querySelector('input[name="cloneSize"]:checked').value;
+      const quantity = document.getElementById("quantity").value;
+      const notes = document.getElementById("notes").value;
+      
+      // Generate order number and calculate price
+      const orderNumber = generateOrderNumber();
+      const price = calculatePrice(cloneSize, quantity);
+      
+      // Update invoice display
       document.getElementById("invoiceOrderNumber").innerText = orderNumber;
       document.getElementById("invoiceName").innerText = name;
       document.getElementById("invoiceEmail").innerText = email;
-      document.getElementById("invoiceType").innerText = orderType;
+      document.getElementById("invoicePhone").innerText = phone;
+      document.getElementById("invoiceOrderType").innerText = orderType;
+      document.getElementById("invoiceDelivery").innerText = deliveryMethod;
       document.getElementById("invoiceStrain").innerText = strain;
+      document.getElementById("invoiceCloneSize").innerText = cloneSize;
       document.getElementById("invoiceQuantity").innerText = quantity;
-      document.getElementById("invoiceTotal").innerText = totalPrice;
       document.getElementById("invoiceNotes").innerText = notes || "None";
-
-      // Update hidden form inputs for submission
+      document.getElementById("invoicePrice").innerText = price;
+      
+      // Update hidden form fields
       document.getElementById("submitOrderNumber").value = orderNumber;
       document.getElementById("submitName").value = name;
       document.getElementById("submitEmail").value = email;
-      document.getElementById("submitType").value = orderType;
+      document.getElementById("submitPhone").value = phone;
+      document.getElementById("submitOrderType").value = orderType;
+      document.getElementById("submitDelivery").value = deliveryMethod;
       document.getElementById("submitStrain").value = strain;
+      document.getElementById("submitCloneSize").value = cloneSize;
       document.getElementById("submitQuantity").value = quantity;
-      document.getElementById("submitTotal").value = totalPrice;
       document.getElementById("submitNotes").value = notes;
-
-      // Show the invoice section
+      document.getElementById("submitPrice").value = price;
+      
+      // Show invoice
       document.getElementById("invoice").style.display = "block";
+      
+      // Scroll to invoice
+      document.getElementById("invoice").scrollIntoView({behavior: "smooth"});
     }
 
-    function copyInvoice() {
-      const invoiceText = `
-Order #: ${document.getElementById("invoiceOrderNumber").innerText}
-Name: ${document.getElementById("invoiceName").innerText}
-Email: ${document.getElementById("invoiceEmail").innerText}
-Type: ${document.getElementById("invoiceType").innerText}
-Strain: ${document.getElementById("invoiceStrain").innerText}
-Quantity: ${document.getElementById("invoiceQuantity").innerText}
-Total Price: $${document.getElementById("invoiceTotal").innerText}
-Notes: ${document.getElementById("invoiceNotes").innerText}
-      `;
-      navigator.clipboard.writeText(invoiceText).then(() => {
-        alert("Invoice copied to clipboard!");
-      });
-    }
-
-    // Initialize strain info on page load
-    updateStrainInfo();
-
-    // Handle form submission
+    // Form validation for submit
     document.getElementById("submitForm").addEventListener("submit", function(e) {
-      // You can add any final validation here before submission
-      console.log("Form submitted to FormSubmit");
+      if (document.getElementById("invoice").style.display !== "block") {
+        e.preventDefault();
+        alert("Please generate an invoice first!");
+      }
+    });
+    
+    // Initialize strain info on page load
+    document.addEventListener("DOMContentLoaded", function() {
+      updateStrainInfo();
     });
   </script>
-
 </body>
 </html>
+
