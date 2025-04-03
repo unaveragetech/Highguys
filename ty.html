@@ -3,40 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You for Your Order</title>
+  <title>Thank You | Highguys</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+    }
+    .banner {
+      background: linear-gradient(45deg, #008000, #003300);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
-    .thank-you-container {
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 90%;
+    .checkmark {
+      color: #008000;
+      font-size: 80px;
+      line-height: 1;
+      margin-bottom: 20px;
     }
     h1 {
       color: #008000;
       margin-bottom: 20px;
     }
     p {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.6;
-      margin-bottom: 30px;
-    }
-    .checkmark {
-      color: #008000;
-      font-size: 80px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .btn {
       display: inline-block;
@@ -47,27 +52,39 @@
       border-radius: 5px;
       font-size: 16px;
       transition: background 0.3s;
+      margin-top: 15px;
     }
     .btn:hover {
       background: #006600;
     }
     .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #666;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <div class="thank-you-container">
+  <!-- Banner -->
+  <div class="banner">
+    🌿 Highguys Order Confirmation 🌿
+  </div>
+
+  <div class="container">
     <div class="checkmark">✓</div>
-    <h1>Order Received!</h1>
-    <p>Thank you for your order. We've received your request and will be in touch shortly with confirmation and next steps.</p>
-    <p>A copy of your invoice has been sent to your email address.</p>
+    <h1>Your Order Has Been Received!</h1>
+    <p>Thank you for your order. We've received your request and will process it shortly.</p>
+    <p>You'll receive a confirmation email with your order details and next steps.</p>
+    <p>For any questions, please contact us at <strong>highguys@example.com</strong></p>
     <a href="index.html" class="btn">Return to Homepage</a>
-    <div class="footer">
-      <p>Need immediate assistance? <a href="mailto:your@email.com">Contact our support team</a></p>
-    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    🚨 <strong>Disclaimer:</strong> All orders are subject to verification. This service is for educational and research purposes only. Please comply with local laws. 🚨
   </div>
 </body>
 </html>
